@@ -16,7 +16,7 @@ fi
 make_final_html()
 {
     cat header.html > ${HTMLFILE}
-    sed '1,23d' blackarch_linux_guide/${HTMLFILE} | sed '$d' | sed '$d' \
+    sed '1,23d' guide/${HTMLFILE} | sed '$d' | sed '$d' \
         >> ${HTMLFILE}
     cat footer.html >> ${HTMLFILE}
 }
