@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TEXFILE="blackarch_linux_guide.tex"
+TEXFILE="guide.tex"
 HTMLFILE="`echo ${TEXFILE} | cut -d '.' -f 1`.html"
 
 if [ ${#} -ne 1 ]
@@ -16,7 +16,7 @@ fi
 make_final_html()
 {
     cat header.html > ${HTMLFILE}
-    sed '1,20d' blackarch_linux_guide/${HTMLFILE} | sed '$d' | sed '$d' \
+    sed '1,23d' blackarch_linux_guide/${HTMLFILE} | sed '$d' | sed '$d' \
         >> ${HTMLFILE}
     cat footer.html >> ${HTMLFILE}
 }
@@ -32,7 +32,7 @@ then
     make_final_html
 elif [ "${1}" = "clean" ]
 then
-    rm -rf *.pdf *.toc *.log *.aux *.out *.exs ${HTMLFILE} blackarch_linux_guide
+    rm -rf *.pdf *.toc *.log *.aux *.out *.exs ${HTMLFILE} guide
 else
     echo "mount /dev/brain"
     exit 1337
