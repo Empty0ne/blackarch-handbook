@@ -6,7 +6,7 @@
 
 
 %%% BEGIN %%%
-\documentclass[a4paper, twoside, 11pt]{article}
+\documentclass[a4paper, oneside, 11pt]{book}
 
 
 %%% INCLUDES %%%
@@ -24,7 +24,7 @@
 \usepackage{tocloft}
 \usepackage{color}
 \usepackage{enumerate}
-\usepackage[%
+\usepackage[
 pdftitle={BlackArch Linux, The BlackArch Linux Guide},
 pdfsubject={BlackArch Linux, The BlackArch Linux Guide},
 pdfauthor={BlackArch Linux, BlackArch Linux},
@@ -42,7 +42,7 @@ pdfcenterwindow=true
 \frenchspacing
 \sloppy
 \pagecolor{black}
-\color{gray}
+\color{white}
 \hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=red,
 menucolor=red, pagecolor=red, urlcolor=red}
 \setcounter{tocdepth}{10}
@@ -64,7 +64,6 @@ menucolor=red, pagecolor=red, urlcolor=red}
 
 %%% DOCUMENT %%%
 \begin{document}
-
 \pagestyle{empty}
 \begin{center}
 \begin{figure}[htbp]
@@ -80,16 +79,18 @@ menucolor=red, pagecolor=red, urlcolor=red}
 \vspace{1cm}
 \Large{\color{red}http://www.blackarch.org/}\\
 \vspace{0.5cm}
-\LARGE{\today}
+\Large{\today}
 \end{center}
 \newpage
 \tableofcontents
 \newpage
 \pagestyle{fancy}
 
-\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{What is BlackArch Linux?}
+\chapter{Introduction}
+
+\section{What is BlackArch Linux?}
 \href{http://www.blackarch.org}{BlackArch Linux} is a lightweight expansion to
 Arch Linux for penetration testers.
 \\\\
@@ -103,13 +104,13 @@ We currently have over 650 tools in our toolset and the repository is constantly
 expanding. All tools are thoroughly tested before being added to the codebase to
 maintain the quality of the repository.
 
-\subsection{The story of BlackArch Linux}
+\section{The story of BlackArch Linux}
 foo bar
 
-\subsection{Supported platforms}
+\section{Supported platforms}
 foo bar
 
-\subsection{Get involved}
+\section{Get involved}
 You can get in touch with the BlackArch team. Just check out the following:
 \\\\
 Web: \url{http://www.blackarch.org/}
@@ -120,9 +121,9 @@ IRC: \url{irc://irc.freenode.net/blackarch}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{User Guide}
+\chapter{User Guide}
 
-\subsection{Installation}
+\section{Installation}
 The following sections will show you how to setup the BlackArch repository and
 install packages. BlackArch supports both, installing from repository using
 binary packages as well as compiling and installing from sources.
@@ -132,7 +133,7 @@ user repository. If you want an ISO instead, see the
 \href{http://www.blackarch.org/download.html#iso}{Live ISO} section.
 \\\\
 
-\subsubsection{Setting up repository}
+\subsection{Setting up repository}
 There are 6 steps in order to setup and use the BlackArch repository
 successfully. You must follow the instuctions in order. Do not add
 \textbf{blackarch} to your \textit{pacman.conf} file without following steps 0
@@ -143,6 +144,7 @@ to 2 first.
 the entry and run \textit{pacman -Syy}.
 \item Run the following as root. This is for package signing.
 {\small
+\color{gray}
 \begin{verbatim}
 wget -q http://blackarch.org/keyring/blackarch-keyring.pkg.tar.xz{,.sig}
 gpg --keyserver hkp://pgp.mit.edu --recv 4345771566D76038C7FEB43863EC0ADBEA87E4E3
@@ -156,6 +158,7 @@ pacman --noc -U blackarch-keyring.pkg.tar.xz
 sources as possible.
 \item Append the following lines to your /etc/pacman.conf file:
 {\small
+\color{gray}
 \begin{verbatim}
 [blackarch]
 Server = <mirror_site>/$repo/os/$arch
@@ -165,43 +168,47 @@ Replace \textit{\textless mirror\_site\textgreater} with a mirror site of your
 choosing. Please use one of our official mirrors.
 \item Now run:
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo pacman -Syyu
 \end{verbatim}
 }
 \end{enumerate}
 
-\subsubsection{Installing packages}
+\subsection{Installing packages}
 You may now install tools from the blackarch repository.
-
 \begin{enumerate}
 \item To list all of the available tools, run
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo pacman -Sgg | grep blackarch | cut -d' ' -f2 | sort -u
 \end{verbatim}
 }
 \item To install all of the tools, run
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo pacman -S blackarch
 \end{verbatim}
 }
 \item To install a category of tools, run
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo pacman -S blackarch-<category>
 \end{verbatim}
 }
 \item To see the blackarch categories, run
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo pacman -Sg | grep blackarch
 \end{verbatim}
 }
 \end{enumerate}
 
-\subsubsection{Installing packages from source}
+\subsection{Installing packages from source}
 As part of an alternative method of installation, you can build the BlackArch
 packages from source. You can find the PKGBUILDs on
 \href{https://github.com/BlackArch/blackarch/tree/master/packages}{github}. To
@@ -217,6 +224,7 @@ pacman -S blackman
 }
 \item You can build and install blackman from source:
 {\small
+\color{gray}
 \begin{verbatim}
 mkdir blackman
 cd blackman
@@ -227,49 +235,56 @@ makepkg -s
 }
 \item Download, compile and install packages:
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo blackman -i package
 \end{verbatim}
 }
 \item Download, compile and install whole category:
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo blackman -g group
 \end{verbatim}
 }
 \item Download, compile and install all of the BlackArch tools:
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo blackman -a
 \end{verbatim}
 }
 \item To list the blackarch categories:
 {\small
+\color{gray}
 \begin{verbatim}
 $ blackman -l
 \end{verbatim}
 }
 \item To list category tools:
 {\small
+\color{gray}
 \begin{verbatim}
 $ blackman -p category
 \end{verbatim}
 }
 \end{itemize}
 
-\subsubsection{Installing from live-, netinstall- ISO or ArchLinux}
+\subsection{Installing from live-, netinstall- ISO or ArchLinux}
 You can install BlackArch Linux from one of our live- or netinstall-ISOs.\\See
 \url{http://www.blackarch.org/download.html#iso}. The following steps are
 required after the ISO boot up.
 \begin{itemize}
 \item Install blackarch-install-scripts package:
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo pacman -S blackarch-install-scripts
 \end{verbatim}
 }
 \item Run
 {\small
+\color{gray}
 \begin{verbatim}
 $ sudo blackarch-install
 \end{verbatim}
@@ -278,37 +293,37 @@ $ sudo blackarch-install
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Developer Guide}
+\chapter{Developer Guide}
 
-\subsection{Repository structure}
+\section{Repository structure}
 foo bar
 
-\subsubsection{broken}
+\subsection{broken}
 foo bar
 
-\subsubsection{docs}
+\subsection{docs}
 foo bar
 
-\subsubsection{mirror}
+\subsection{mirror}
 foo bar
 
-\subsubsection{misc}
+\subsection{misc}
 foo bar
 
-\subsubsection{packages}
+\subsection{packages}
 foo bar
 
-\subsubsection{scripts}
+\subsection{scripts}
 foo bar
 
-\subsection{Contributing to repository}
+\section{Contributing to repository}
 This section shows you how to contribute to the BlackArch Linux project. We
 accept pull requests of all sizes, from tiny typo fixes to new packages.\\For
 help, suggestions, or questions feel free to contact us.
 \\\\
 Everyone is welcome to contribute. All contributions are appreciated.
 
-\subsubsection{Required tutorials}
+\subsection{Required tutorials}
 Please read the following tutorials before contributing:
 \begin{itemize}
 \item
@@ -320,7 +335,7 @@ Packages}
 \item \href{https://wiki.archlinux.org/index.php/Makepkg}{Makepkg}
 \end{itemize}
 
-\subsubsection{Steps for contributing}
+\subsection{Steps for contributing}
 In order to submit your changes to the BlackArchLinux project, follow these
 steps:
 \begin{enumerate}
@@ -332,16 +347,17 @@ steps:
 \item Ask us to merge in your changes, preferably through a pull request.
 \end{enumerate}
 
-\subsubsection{Example}
+\subsection{Example}
 The following example demonstrates submitting a new package to the BlackArch
 project. We use \href{https://wiki.archlinux.org/index.php/yaourt}{yaourt}
 (you can use pacaur as well) to fetch a pre-existing PKGBUILD file for
 \textbf{nfsshell} from the \href{https://aur.archlinux.org/}{AUR} and adjust it
 according to our needs.
 
-\paragraph{Fetch PKGBUILD}
+\subsubsection{Fetch PKGBUILD}
 Fetch the \textit{PKGBUILD} file using yaourt or pacaur:
 {\small
+\color{gray}
 \begin{verbatim}
 user@blackarchlinux $ yaourt -G nfsshell
 ==> Download nfsshell sources
@@ -352,9 +368,10 @@ user@blackarchlinux $ cd nfsshell/
 \end{verbatim}
 }
 
-\paragraph{Clean up PKGBUILD}
+\subsubsection{Clean up PKGBUILD}
 Clean up the \textit{PKGBUILD} file and save some time:
 {\small
+\color{gray}
 \begin{verbatim}
 user@blackarchlinux nfsshell $ ./blarckarch/scripts/prep PKGBUILD
 cleaning 'PKGBUILD'...
@@ -370,17 +387,19 @@ removing trailing whitespace...
 \end{verbatim}
 }
 
-\paragraph{Adjust PKGBUILD}
+\subsubsection{Adjust PKGBUILD}
 Adjust the \textit{PKGBUILD} file:
 {\small
+\color{gray}
 \begin{verbatim}
 user@blackarchlinux nfsshell $ vi PKGBUILD
 \end{verbatim}
 }
 
-\paragraph{Build the package}
+\subsubsection{Build the package}
 Build the package:
 {\small
+\color{gray}
 \begin{verbatim}
 user@blackarchlinux nfsshell $ makepkg -sf
 ==> Making package: nfsshell 19980519-1 (Mon Dec  2 17:23:51 CET 2013)
@@ -401,18 +420,20 @@ CurrentDload  Upload   Total   Spent    Left  Speed100 29213  100 29213    0
 \end{verbatim}
 }
 
-\paragraph{Install and test the package}
+\subsubsection{Install and test the package}
 Install and test the package:
 {\small
+\color{gray}
 \begin{verbatim}
 user@blackarchlinux nfsshell $ pacman -U nfsshell-19980519-1-x86_64.pkg.tar.xz
 user@blackarchlinux nfsshell $ nfsshell # test it
 \end{verbatim}
 }
 
-\paragraph{Add, commit and push package}
+\subsubsection{Add, commit and push package}
 Add, commit and push the package
 {\small
+\color{gray}
 \begin{verbatim}
 user@blackarchlinux nfsshell $ cd /blackarchlinux/packages
 user@blackarchlinux ~/blackarchlinux/packages $ mv ~/nfsshell .
@@ -421,15 +442,16 @@ nfsshell && git push
 \end{verbatim}
 }
 
-\paragraph{Create a pull request}
+\subsubsection{Create a pull request}
 Create a pull request on \href{https://github.com/}{github.com}
 {\small
+\color{gray}
 \begin{verbatim}
 firefox https://github.com/<contributor>/blackarchlinux
 \end{verbatim}
 }
 
-\subsubsection{Requests}
+\subsection{Requests}
 \begin{enumerate}
 \item Don't add \textbf{Maintainer} or \textbf{Contributor} comments to
 \textit{PKGBUILD} files. Add maintainer and contributor names to the
@@ -438,7 +460,7 @@ AUTHORS section of BlackArch guide.
 \textit{PKGBUILD} files in the repo and use two-space indentation.
 \end{enumerate}
 
-\subsubsection{General tips}
+\subsection{General tips}
 \href{http://wiki.archlinux.org/index.php/Namcap}{namcap} can check packages for
 errors.
 

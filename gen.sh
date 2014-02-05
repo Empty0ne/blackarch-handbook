@@ -1,6 +1,7 @@
 #!/bin/sh
 
 TEXFILE="blackarch_linux_guide.tex"
+HTMLFILE="`echo ${TEXFILE} | cut -d '.' -f 1`.html"
 
 if [ ${#} -ne 1 ]
 then
@@ -12,6 +13,14 @@ then
     exit 1337
 fi
 
+make_final_html()
+{
+    cat header.html > ${HTMLFILE}
+    sed '1,20d' blackarch_linux_guide/${HTMLFILE} | sed '$d' |
+    sed '$d' >> ${HTMLFILE}
+    cat footer.html >> ${HTMLFILE}
+}
+
 if [ "${1}" = "pdf" ]
 then
     pdflatex "${TEXFILE}"
@@ -20,9 +29,10 @@ then
     latex2html -nonavigation -notop_navigation -nobottom_navigation \
         -split 0 -toc_depth 10 -lcase_tags -address "BlackArch Linux" \
         -show_section_numbers -html_version "4.0" -info 0 "${TEXFILE}"
+    make_final_html
 elif [ "${1}" = "clean" ]
 then
-    rm -rf *.pdf *.toc *.log *.aux *.out *.exs template/
+    rm -rf *.pdf *.toc *.log *.aux *.out *.exs ${HTMLFILE} blackarch_linux_guide
 else
     echo "mount /dev/brain"
     exit 1337
