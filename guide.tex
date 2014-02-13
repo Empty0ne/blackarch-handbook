@@ -170,7 +170,7 @@ choosing. Please use one of our official mirrors.
 {\small
 \color{gray}
 \begin{verbatim}
-$ sudo pacman -Syyu
+# pacman -Syyu
 \end{verbatim}
 }
 \end{enumerate}
@@ -182,28 +182,28 @@ You may now install tools from the blackarch repository.
 {\small
 \color{gray}
 \begin{verbatim}
-$ sudo pacman -Sgg | grep blackarch | cut -d' ' -f2 | sort -u
+# pacman -Sgg | grep blackarch | cut -d' ' -f2 | sort -u
 \end{verbatim}
 }
 \item To install all of the tools, run
 {\small
 \color{gray}
 \begin{verbatim}
-$ sudo pacman -S blackarch
+# pacman -S blackarch
 \end{verbatim}
 }
 \item To install a category of tools, run
 {\small
 \color{gray}
 \begin{verbatim}
-$ sudo pacman -S blackarch-<category>
+# pacman -S blackarch-<category>
 \end{verbatim}
 }
 \item To see the blackarch categories, run
 {\small
 \color{gray}
 \begin{verbatim}
-$ sudo pacman -Sg | grep blackarch
+# pacman -Sg | grep blackarch
 \end{verbatim}
 }
 \end{enumerate}
